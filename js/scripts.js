@@ -12,6 +12,7 @@ $(function(){
     var workspaceRefresh = workspace.find('#workspace-refresh');
     var modalBackdrop = $('.modal-backdrop');
     var activeWorkspaceId = null;
+	var filter = '';
     modalInit();
 
     // ##############################################################################################
@@ -107,11 +108,18 @@ $(function(){
     });
     
     // change workspaces on click (ajaxCall + changing Headlines etc. )
-    $('#workspace-container').on('click', '#workspace-container > .workspace', function(){
-        var caption = $(this).find('h3').text();
+    $('#workspace-container').on('click', '#workspace-container > .span4 > .workspace', function(){
+	
+		$('.workspace_filter').remove();
+	
+	    var caption = $(this).find('h3').text();
         activeWorkspaceId = $(this).data('workspace-id');
-        $('#start-modal').modal('hide');
+		filter = $($(this).parent().find('.statusfilter')).val();
+		
+		$('#start-modal').modal('hide');
         $('.workspace_caption').show().attr('data-workspace-id', activeWorkspaceId).html(caption);
+		if(filter!='')
+			$('.workspace_caption').after('<div class="workspace_filter">  ' + $(this).parent().find('.statusfilter option:selected').text() + ' Tasks</div>');
         modalBackdrop.fadeOut();
         $('#start-modal').children('.modal-footer').html('<a href="#" class="btn" data-dismiss="modal">Close</a>');
         tasksAjaxCall();
@@ -129,7 +137,7 @@ $(function(){
         $.ajax({
           type: "GET",
           url: "request.php",
-          data: "apiKey=" + apiKeyInput.val() + "&workspaceId=" + activeWorkspaceId + "&projectId=all",
+          data: "apiKey=" + apiKeyInput.val() + "&workspaceId=" + activeWorkspaceId + "&projectId=all&filter=" + filter,
           timeout: 90000,
           success: function( result ) {
               $('#track-table').show().find('tbody').html(result);

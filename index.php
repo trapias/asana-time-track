@@ -15,7 +15,7 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
+    <style type="text/css">.workspace_filter{color:#666;padding:10px;text-align:right;};</style>
   </head>
 
   <body>
@@ -52,6 +52,7 @@
     <div class="modal fade" id="start-modal">
       <div class="modal-header">
         <h3>Insert ASANA-API-KEY</h3>
+		
       </div>
       <div class="modal-body">
         <form id="api-key-form" class="well form-horizontal" validate>
@@ -91,7 +92,7 @@
         <h3>Who made this awesome tool?</h3>
       </div>
       <div class="modal-body">
-        <p>
+	    <p>
             We did, because we love asana but missed a time tracking feature.<br/>
             So we created one on our own, which works perfectly well with asana together.
             <br/><br/>

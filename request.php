@@ -16,6 +16,7 @@ $apiKey = $_GET['apiKey'];
 $workspaceId = !empty($_GET['workspaceId']) ? $_GET['workspaceId'] : '';
 $projectId = !empty($_GET['projectId']) ? $_GET['projectId'] : '';
 $updateId = !empty($_GET['updateId']) ? $_GET['updateId'] : '';
+$filter = !empty($_GET['filter']) ? $_GET['filter'] : '';
 
 // initalize
 $asana = new AsanaApi($apiKey); 
@@ -34,7 +35,8 @@ if($asana->getResponseCode() == '200' && $result != '' ){
         // $resultJson contains an object in json with all projects
         foreach($resultJson->data as $workspace){
             if($workspace->name == 'Personal Projects') continue;
-            echo '<div class="span4 well workspace" data-workspace-id="' . $workspace->id .'"><h3>' . $workspace->name .'</h3></div>';
+            echo '<div class="span4 well"><div class="workspace" data-workspace-id="' . $workspace->id .'"><h3>' . $workspace->name .'</h3></div>'
+			. '<select style="width:auto;" name="statusfilter" class="statusfilter"><option value="">All</option><option value="today">Today</option><option value="upcoming">Upcoming</option><option value="later">Later</option><option value="inbox">Inbox</option></select></div>';
         }
     }
 
@@ -71,7 +73,7 @@ if($asana->getResponseCode() == '200' && $result != '' ){
              $progressState = ($progressBarPercent < 80) ? 'progress-success' : (($progressBarPercent < 100 ) ? 'progress-warning' : 'progress-danger');
              
              // task must be active and your own
-             if($taskState['completed'] || $taskState['assignee'] != $userId || $taskName == '') {
+             if($taskState['completed'] || $taskState['assignee'] != $userId || $taskName == '' || ($filter!='' && $taskState['assignee_status']!=$filter)) {
                 continue;
              } else {
                 echo '<tr>'
@@ -104,7 +106,7 @@ if($asana->getResponseCode() == '200' && $result != '' ){
          }
 
          // no assigned task is found
-         if(!$in) echo '<tr><td colspan="6">Sorry, no assigned tasks are found...</td></tr>';
+         if(!$in) echo '<tr><td colspan="7">Sorry, no assigned tasks are found...</td></tr>';
          
          echo '<tr class="worked_time_line"><td colspan="5"><td class="text_align right">Worked today:</td><td class="worked_time_today">0 hours 0 minutes</td></tr>';
                  

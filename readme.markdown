@@ -14,3 +14,12 @@ An extension for the popular task management tool Asana. This Extension provides
 ## Some Notes
 We are still in beta stadium, but it should work fine.
 Feel free to contribute to our project.
+
+##Trapias' fork
+* added a column to display assignee status
+* added the possibility to filter tasks when you change workspace: a dropdown allows to choose whether to see...
+	* All tasks
+	* Only tasks marked for `today`
+	* Only tasks marked `upcoming`
+	* Only tasks marked `later`
+	* Only tasks marked `inbox`
