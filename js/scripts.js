@@ -124,7 +124,7 @@ $(function(){
     
     function tasksAjaxCall(projectId){
         // clean tbody
-        $('#track-table').show().find('tbody').html('<tr><td colspan="6">One moment please, your assigned tasks are loading...</td></tr>');
+        $('#track-table').show().find('tbody').html('<tr><td colspan="7">One moment please, your assigned tasks are loading...</td></tr>');
         
         $.ajax({
           type: "GET",

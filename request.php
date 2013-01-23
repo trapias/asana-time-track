@@ -77,6 +77,7 @@ if($asana->getResponseCode() == '200' && $result != '' ){
                 echo '<tr>'
                     .'<td>'. $taskState['projects']['name'] .'</td>'
                     .'<td>'. $taskName  .'</td>'
+					.'<td>'. $taskState['assignee_status']  .'</td>'
                     .'<td class="estimated_time" data-estimated-hours="'.$value['estimatedHours'].'" data-estimated-minutes="'.$value['estimatedMinutes'].'">'
                         . '<span class="my_label" rel="tooltip" title="click to edit">' . $estimatedHours .' '. $estimatedMinutes . '</span>'
                         . '<input class="date-picker-et" name="date-picker-et"/>'
@@ -105,7 +106,7 @@ if($asana->getResponseCode() == '200' && $result != '' ){
          // no assigned task is found
          if(!$in) echo '<tr><td colspan="6">Sorry, no assigned tasks are found...</td></tr>';
          
-         echo '<tr class="worked_time_line"><td colspan="4"><td class="text_align right">Worked today:</td><td class="worked_time_today">0 hours 0 minutes</td></tr>';
+         echo '<tr class="worked_time_line"><td colspan="5"><td class="text_align right">Worked today:</td><td class="worked_time_today">0 hours 0 minutes</td></tr>';
                  
         
     }

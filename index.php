@@ -121,6 +121,7 @@
           <tr>
             <th>Project</th>
             <th>Tasks (assigned to you)</th>
+			<th>Status</th>
             <th>Estimated Time</th>
             <th>Worked Time</th>
             <th>Progress</th>
