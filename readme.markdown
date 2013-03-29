@@ -24,7 +24,7 @@ Feel free to contribute to our project.
 	* Only tasks marked `later`
 	* Only tasks marked `inbox`
 	
-	![workspacechooser.PNG](../Screenshots/workspacechooser.PNG)
+	![workspacechooser.PNG](./Screenshots/workspacechooser.PNG)
 	
 	![tasks.PNG](./Screenshots/tasks.PNG)
 	
