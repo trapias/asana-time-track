@@ -23,4 +23,10 @@ Feel free to contribute to our project.
 	* Only tasks marked `upcoming`
 	* Only tasks marked `later`
 	* Only tasks marked `inbox`
+	
+	![workspacechooser.PNG](../Screenshots/workspacechooser.PNG)
+	
+	![tasks.PNG](./Screenshots/tasks.PNG)
+	
+	
 * acquired brunohq modifications to handle subtasks (https://github.com/brunohq/asana-time-track)
